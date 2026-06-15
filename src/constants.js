@@ -1,9 +1,11 @@
+const BASE = import.meta.env.BASE_URL
+
 export const CONNECTOR_ICONS = {
-  'Metabase': '/assets/conn-metabase.webp',
-  'Power BI': '/assets/conn-powerbi.webp',
-  'Looker':   '/assets/conn-looker.webp',
-  'SuperSet': '/assets/conn-superset.webp',
-  'Grafana':  '/assets/conn-grafana.webp',
+  'Metabase': `${BASE}assets/conn-metabase.webp`,
+  'Power BI': `${BASE}assets/conn-powerbi.webp`,
+  'Looker':   `${BASE}assets/conn-looker.webp`,
+  'SuperSet': `${BASE}assets/conn-superset.webp`,
+  'Grafana':  `${BASE}assets/conn-grafana.webp`,
 }
 
 export const CONNECTORS = ['Metabase', 'Power BI', 'Looker', 'SuperSet', 'Grafana']
