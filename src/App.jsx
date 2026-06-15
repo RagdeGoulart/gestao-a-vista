@@ -23,7 +23,7 @@ const INITIAL_STATE = {
   connMenuOpen: false,
   newName: '',
   newCat: 'Vendas',
-  checked: { funil: true, canais: true, agendas: true },
+  selOrder: ['funil', 'canais', 'agendas'],   // selected leaf ids, in selection order
   collapsed: {},
   intervalNum: 30,
   intervalUnit: 'Segundos',
@@ -104,16 +104,14 @@ export default function App() {
   }, [set])
 
   const buildPlaylist = useCallback(st => {
-    const out = []
     const meta = { ...STATIC_LEAF_META, ...st.leafMeta }
-    const walk = nodes => nodes.forEach(n => {
-      if (Array.isArray(n.children)) walk(n.children)
-      else if (st.checked[n.id]) {
-        const m = meta[n.id] || { type: 'comercial', conn: 'Metabase' }
-        out.push({ id: n.id, label: n.label, title: n.label, type: m.type, subtitle: 'Workspace Comercial · ' + m.conn })
-      }
+    const out = []
+    st.selOrder.forEach(id => {
+      const n = findLeaf(st.tree, id)
+      if (!n) return                            // skip ids whose leaf was deleted
+      const m = meta[id] || { type: 'comercial', conn: 'Metabase' }
+      out.push({ id, label: n.label, title: n.label, type: m.type, subtitle: 'Workspace Comercial · ' + m.conn })
     })
-    walk(st.tree)
     return out
   }, [])
 
@@ -171,7 +169,10 @@ export default function App() {
       const n = findNode(sRef.current.tree, nodeId)
       set({ menu: null, editingId: nodeId, editingValue: n?.label ?? '' })
     } else if (action === 'delete') {
-      set(prev => ({ tree: removeFrom(prev.tree, nodeId), menu: null }))
+      set(prev => {
+        const tree = removeFrom(prev.tree, nodeId)
+        return { tree, menu: null, selOrder: prev.selOrder.filter(id => findLeaf(tree, id)) }
+      })
     }
   }
 
@@ -209,25 +210,33 @@ export default function App() {
     }))
   }
 
-  // ─── Playlist selection ──────────────────────────────────────────────────────
-  const toggleCheck = id => set(prev => ({ checked: { ...prev.checked, [id]: !prev.checked[id] } }))
+  // ─── Playlist selection (selOrder = selection order) ─────────────────────────
+  const toggleCheck = id => set(prev => (
+    prev.selOrder.includes(id)
+      ? { selOrder: prev.selOrder.filter(x => x !== id) }   // deselect → others renumber
+      : { selOrder: [...prev.selOrder, id] }                // select → appended last
+  ))
 
   const toggleGroup = node => {
     const leaves = leavesOf(node)
-    const allOn = leaves.length > 0 && leaves.every(id => sRef.current.checked[id])
     set(prev => {
-      const c = { ...prev.checked }
-      leaves.forEach(id => { c[id] = !allOn })
-      return { checked: c }
+      const allOn = leaves.length > 0 && leaves.every(id => prev.selOrder.includes(id))
+      if (allOn) {
+        const rm = new Set(leaves)
+        return { selOrder: prev.selOrder.filter(id => !rm.has(id)) }
+      }
+      const toAdd = leaves.filter(id => !prev.selOrder.includes(id))   // tree order for the new ones
+      return { selOrder: [...prev.selOrder, ...toAdd] }
     })
   }
 
-  const selectAll = on => {
-    const all = allLeaves(sRef.current.tree)
-    const c = {}
-    all.forEach(id => { c[id] = on })
-    set({ checked: c })
-  }
+  const selectAll = on => set(prev => {
+    if (!on) return { selOrder: [] }
+    const all = allLeaves(prev.tree)
+    const have = new Set(prev.selOrder)
+    const rest = all.filter(id => !have.has(id))                       // keep current order, append the rest
+    return { selOrder: [...prev.selOrder.filter(id => all.includes(id)), ...rest] }
+  })
 
   // ─── Derived values ──────────────────────────────────────────────────────────
   const meta = { ...STATIC_LEAF_META, ...s.leafMeta }
@@ -241,26 +250,32 @@ export default function App() {
     if (lf) { activeType = m.type; activeTitle = lf.label; activeSubtitle = 'Workspace Comercial · ' + m.conn }
   }
 
-  // Config rows for modal
+  // Config rows for modal — order reflects the selection sequence (selOrder)
+  const livePlaylist = buildPlaylist(s)
+  const orderMap = {}
+  livePlaylist.forEach((p, i) => { orderMap[p.id] = i + 1 })
+  const sel = new Set(s.selOrder)
+
   const cfgRows = []
   const walkCfg = (nodes, level) => nodes.forEach(n => {
     const isFolder = Array.isArray(n.children)
     const checked = isFolder
-      ? (() => { const lv = leavesOf(n); return lv.length > 0 && lv.every(id => s.checked[id]) })()
-      : !!s.checked[n.id]
+      ? (() => { const lv = leavesOf(n); return lv.length > 0 && lv.every(id => sel.has(id)) })()
+      : sel.has(n.id)
     cfgRows.push({
       label: n.label,
       pad: (2 + level * 18) + 'px',
       fw: level === 0 ? 700 : (isFolder ? 600 : 500),
       fg: level === 0 ? 'var(--gray-900)' : 'var(--gray-700)',
       checked,
+      isFolder,
+      order: !isFolder && checked ? orderMap[n.id] : null,
       onToggle: isFolder ? () => toggleGroup(n) : () => toggleCheck(n.id),
     })
     if (isFolder) walkCfg(n.children, level + 1)
   })
   walkCfg(s.tree, 0)
 
-  const livePlaylist = buildPlaylist(s)
   const intervalLabel = s.intervalNum + ' ' + s.intervalUnit.toLowerCase()
 
   // Play dots
@@ -281,7 +296,10 @@ export default function App() {
     onAddDash: (catId, e) => { e.stopPropagation(); set({ modal: 'add', menu: null, targetCatId: catId, newName: '', connector: 'Metabase' }) },
     onMenu: (nodeId, e) => openMenu('cat', nodeId, e, true),
     onSelect: id => set({ activeLeaf: id }),
-    onDelete: id => set(prev => ({ tree: removeFrom(prev.tree, id), activeLeaf: prev.activeLeaf === id ? null : prev.activeLeaf })),
+    onDelete: id => set(prev => {
+      const tree = removeFrom(prev.tree, id)
+      return { tree, selOrder: prev.selOrder.filter(lid => findLeaf(tree, lid)), activeLeaf: prev.activeLeaf === id ? null : prev.activeLeaf }
+    }),
     onEditInput: e => set({ editingValue: e.target.value }),
     onEditKey: e => { if (e.key === 'Enter') commitRename(); else if (e.key === 'Escape') set({ editingId: null, editingValue: '' }) },
     commitRename,

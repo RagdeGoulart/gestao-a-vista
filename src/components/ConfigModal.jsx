@@ -4,6 +4,24 @@ import PrizmSwitch from './ui/PrizmSwitch'
 import PrizmCheckbox from './ui/PrizmCheckbox'
 import { PRESET_DEFS } from '../constants'
 
+function OrderBadge({ n, onClick }) {
+  return (
+    <div
+      onClick={onClick}
+      title={'Posição ' + n + ' na exibição'}
+      style={{
+        width: 22, height: 22, flex: 'none', borderRadius: 6,
+        background: 'var(--primary)', color: '#fff',
+        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+        fontSize: 11, fontWeight: 700, lineHeight: 1, cursor: 'pointer',
+        transition: 'all .15s',
+      }}
+    >
+      {n}<span style={{ fontSize: 8, alignSelf: 'flex-start', marginTop: 3 }}>º</span>
+    </div>
+  )
+}
+
 export default function ConfigModal({
   state, cfgRows, intervalLabel, selCount,
   onClose, onStartPlay,
@@ -43,7 +61,7 @@ export default function ConfigModal({
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, padding: 16, borderBottom: '1px solid var(--border)', flex: 'none' }}>
           <div>
             <div style={{ fontSize: 19, fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--gray-900)' }}>Configurar apresentação</div>
-            <div style={{ fontSize: 13, color: 'var(--muted-foreground)', marginTop: 3 }}>Selecione os dashboards e o tempo de exibição.</div>
+            <div style={{ fontSize: 13, color: 'var(--muted-foreground)', marginTop: 3 }}>Selecione a ordem dos dashboards e o tempo de exibição.</div>
           </div>
           <button onClick={onClose} className="icon-btn" style={{ width: 30, height: 30, flex: 'none' }}>
             <Icon name="x" size={18} />
@@ -86,7 +104,11 @@ export default function ConfigModal({
                   onMouseEnter={e => { e.currentTarget.style.background = 'var(--gray-100)' }}
                   onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}
                 >
-                  <PrizmCheckbox checked={row.checked} onClick={row.onToggle} />
+                  <div style={{ width: 22, flex: 'none', display: 'flex', justifyContent: 'center' }}>
+                    {row.order != null
+                      ? <OrderBadge n={row.order} onClick={row.onToggle} />
+                      : <PrizmCheckbox checked={row.checked} onClick={row.onToggle} />}
+                  </div>
                   <span style={{ fontSize: 14, fontWeight: row.fw, color: row.fg }}>{row.label}</span>
                 </div>
               ))}
