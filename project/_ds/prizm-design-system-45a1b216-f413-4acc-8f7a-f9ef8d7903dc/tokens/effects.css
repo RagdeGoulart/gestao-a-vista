@@ -1,0 +1,24 @@
+/* ============================================================
+   PRIZM — Elevation & effects
+   Subtle, neutral shadows (shadcn / Tailwind shadow scale).
+   ============================================================ */
+
+:root {
+  --shadow-2xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-xs:  0 1px 2px 0 rgb(0 0 0 / 0.06);
+  --shadow-sm:  0 1px 2px 0 rgb(0 0 0 / 0.05), 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  --shadow-md:  0 2px 4px -1px rgb(0 0 0 / 0.06), 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg:  0 4px 6px -2px rgb(0 0 0 / 0.05), 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl:  0 10px 10px -5px rgb(0 0 0 / 0.04), 0 20px 25px -5px rgb(0 0 0 / 0.1);
+
+  /* Focus ring (shadcn): primary at 50% behind a base ring */
+  --ring-width: 3px;
+  --ring-offset: 2px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);     /* @kind other */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+  --duration-fast: 120ms;                         /* @kind other */
+  --duration: 180ms;                              /* @kind other */
+  --duration-slow: 280ms;                         /* @kind other */
+}

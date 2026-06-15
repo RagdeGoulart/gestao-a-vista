@@ -1,0 +1,124 @@
+/* ============================================================
+   PRIZM — Typography tokens
+   Sans: Inter · Mono: Geist Mono · Alt sans: Geist
+   Scale follows shadcn/ui typography defaults.
+   ============================================================ */
+
+:root {
+  /* Font families */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-alt: "Geist", var(--font-sans);
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Type scale (px) */
+  --text-xs: 0.75rem;    /* 12 */
+  --text-sm: 0.875rem;   /* 14 */
+  --text-base: 1rem;     /* 16 */
+  --text-lg: 1.125rem;   /* 18 */
+  --text-xl: 1.25rem;    /* 20 */
+  --text-2xl: 1.5rem;    /* 24 */
+  --text-3xl: 1.875rem;  /* 30 */
+  --text-4xl: 2.25rem;   /* 36 */
+  --text-5xl: 3rem;      /* 48 */
+
+  /* Line heights */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;   /* leading-7 / body */
+
+  /* Weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* Tracking */
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+}
+
+/* ------------------------------------------------------------
+   Prose / rich-text helpers — class names mirror shadcn docs.
+   Use inside a .prizm-prose container or standalone.
+   ------------------------------------------------------------ */
+.prizm-h1 {
+  font-family: var(--font-sans);
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  font-weight: var(--font-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--foreground);
+}
+.prizm-h2 {
+  font-family: var(--font-sans);
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--foreground);
+}
+.prizm-h3 {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-snug);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--foreground);
+}
+.prizm-h4 {
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  font-weight: var(--font-semibold);
+  color: var(--foreground);
+}
+.prizm-p {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  font-weight: var(--font-normal);
+  color: var(--foreground);
+}
+.prizm-lead {
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+  line-height: var(--leading-normal);
+  color: var(--muted-foreground);
+}
+.prizm-large {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--foreground);
+}
+.prizm-small {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-none);
+  color: var(--foreground);
+}
+.prizm-muted {
+  font-size: var(--text-sm);
+  color: var(--muted-foreground);
+}
+.prizm-blockquote {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  font-style: italic;
+  border-left: 2px solid var(--border);
+  padding-left: 1.5rem;
+  color: var(--foreground);
+}
+.prizm-code {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: var(--font-medium);
+  background: var(--muted);
+  border-radius: var(--radius-sm);
+  padding: 0.125rem 0.375rem;
+  color: var(--foreground);
+}

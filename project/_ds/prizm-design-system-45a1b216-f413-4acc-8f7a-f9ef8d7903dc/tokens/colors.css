@@ -1,0 +1,144 @@
+/* ============================================================
+   PRIZM — Color tokens
+   Base palette: Tailwind "gray" neutrals + "blue" primary.
+   Color space: OKLCH (Tailwind v4 / shadcn convention).
+   ============================================================ */
+
+:root {
+  /* --- Base neutral ramp (Tailwind gray) --- */
+  --gray-50:  oklch(0.985 0.002 247.839);  /* #f9fafb */
+  --gray-100: oklch(0.967 0.003 264.542);  /* #f3f4f6 */
+  --gray-200: oklch(0.928 0.006 264.531);  /* #e5e7eb */
+  --gray-300: oklch(0.872 0.010 258.338);  /* #d1d5db */
+  --gray-400: oklch(0.707 0.022 261.325);  /* #9ca3af */
+  --gray-500: oklch(0.551 0.027 264.364);  /* #6b7280 */
+  --gray-600: oklch(0.446 0.030 256.802);  /* #4b5563 */
+  --gray-700: oklch(0.373 0.034 259.733);  /* #374151 */
+  --gray-800: oklch(0.278 0.033 256.848);  /* #1f2937 */
+  --gray-900: oklch(0.210 0.034 264.665);  /* #111827 */
+  --gray-950: oklch(0.130 0.028 261.692);  /* #030712 */
+
+  /* --- Brand / primary ramp (Tailwind blue) --- */
+  --blue-50:  oklch(0.970 0.014 254.604);  /* #eff6ff */
+  --blue-100: oklch(0.932 0.032 255.585);  /* #dbeafe */
+  --blue-400: oklch(0.707 0.165 254.624);  /* #60a5fa */
+  --blue-500: oklch(0.623 0.214 259.815);  /* #3b82f6 */
+  --blue-600: oklch(0.546 0.245 262.881);  /* #2563eb  ← brand */
+  --blue-700: oklch(0.488 0.243 264.376);  /* #1d4ed8 */
+
+  /* --- Semantic accent ramps --- */
+  --red-500:    oklch(0.637 0.237 25.331);   /* #ef4444 */
+  --red-600:    oklch(0.577 0.245 27.325);   /* #dc2626 */
+  --amber-500:  oklch(0.769 0.188 70.08);    /* #f59e0b */
+  --amber-600:  oklch(0.666 0.179 58.318);   /* #d97706 */
+  --green-500:  oklch(0.723 0.219 149.579);  /* #22c55e */
+  --green-600:  oklch(0.627 0.194 149.214);  /* #16a34a */
+  --orange-500: oklch(0.705 0.213 47.604);   /* #f97316 — charts/activity */
+
+  /* --- Chart palette (matches Figma chart blues + activity orange) --- */
+  --chart-1: var(--blue-600);
+  --chart-2: var(--blue-400);
+  --chart-3: var(--gray-400);
+  --chart-4: var(--orange-500);
+  --chart-5: var(--amber-500);
+}
+
+/* ============================================================
+   Semantic tokens — LIGHT (default)
+   ============================================================ */
+:root,
+.theme-light {
+  --background: oklch(1 0 0);
+  --foreground: var(--gray-950);
+
+  --card: oklch(1 0 0);
+  --card-foreground: var(--gray-950);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--gray-950);
+
+  --primary: var(--blue-600);
+  --primary-foreground: var(--gray-50);
+
+  --secondary: var(--gray-100);
+  --secondary-foreground: var(--gray-900);
+
+  --muted: var(--gray-100);
+  --muted-foreground: var(--gray-500);
+
+  --accent: var(--gray-100);
+  --accent-foreground: var(--gray-900);
+
+  --destructive: var(--red-600);
+  --destructive-foreground: var(--gray-50);
+
+  --warning: var(--amber-500);
+  --warning-foreground: var(--gray-950);
+
+  --success: var(--green-600);
+  --success-foreground: var(--gray-50);
+
+  --border: var(--gray-200);
+  --input: var(--gray-200);
+  --ring: var(--blue-600);
+
+  /* Sidebar surface (shadcn sidebar tokens) */
+  --sidebar: var(--gray-50);
+  --sidebar-foreground: var(--gray-950);
+  --sidebar-primary: var(--blue-600);
+  --sidebar-primary-foreground: var(--gray-50);
+  --sidebar-accent: var(--gray-100);
+  --sidebar-accent-foreground: var(--gray-900);
+  --sidebar-border: var(--gray-200);
+  --sidebar-ring: var(--blue-600);
+}
+
+/* ============================================================
+   Semantic tokens — DARK
+   Apply with <html class="dark"> or .theme-dark on a container.
+   ============================================================ */
+.dark,
+.theme-dark {
+  --background: var(--gray-950);
+  --foreground: var(--gray-50);
+
+  --card: var(--gray-900);
+  --card-foreground: var(--gray-50);
+
+  --popover: var(--gray-900);
+  --popover-foreground: var(--gray-50);
+
+  --primary: var(--blue-500);
+  --primary-foreground: var(--gray-50);
+
+  --secondary: var(--gray-800);
+  --secondary-foreground: var(--gray-50);
+
+  --muted: var(--gray-800);
+  --muted-foreground: var(--gray-400);
+
+  --accent: var(--gray-800);
+  --accent-foreground: var(--gray-50);
+
+  --destructive: var(--red-500);
+  --destructive-foreground: var(--gray-50);
+
+  --warning: var(--amber-500);
+  --warning-foreground: var(--gray-950);
+
+  --success: var(--green-500);
+  --success-foreground: var(--gray-950);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--blue-500);
+
+  --sidebar: var(--gray-900);
+  --sidebar-foreground: var(--gray-50);
+  --sidebar-primary: var(--blue-500);
+  --sidebar-primary-foreground: var(--gray-50);
+  --sidebar-accent: var(--gray-800);
+  --sidebar-accent-foreground: var(--gray-50);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: var(--blue-500);
+}

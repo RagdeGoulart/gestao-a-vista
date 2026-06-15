@@ -1,0 +1,6 @@
+/* PRIZM webfonts — Inter (sans), Geist (alt sans), Geist Mono (mono).
+   Served from Google Fonts. If you need them self-hosted, drop the .woff2
+   files in tokens/fonts/ and replace these @import lines with @font-face. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400..600&display=swap");

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/prizm-design-system-45a1b216-f413-4acc-8f7a-f9ef8d7903dc/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/prizm-design-system-45a1b216-f413-4acc-8f7a-f9ef8d7903dc/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/prizm-design-system-45a1b216-f413-4acc-8f7a-f9ef8d7903dc/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/prizm-design-system-45a1b216-f413-4acc-8f7a-f9ef8d7903dc/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/prizm-design-system-45a1b216-f413-4acc-8f7a-f9ef8d7903dc/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/prizm-design-system-45a1b216-f413-4acc-8f7a-f9ef8d7903dc/tokens/base.css">
+  <script src="_ds/prizm-design-system-45a1b216-f413-4acc-8f7a-f9ef8d7903dc/_ds_bundle.js"></script>
+  <style>
+    *{box-sizing:border-box;}
+    html,body{margin:0;padding:0;}
+    @keyframes gv-pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+    .gv-cat-row .gv-cat-actions{transition:opacity .12s ease;}
+    .gv-cat-row:hover{background:var(--gray-100)!important;}
+    .gv-cat-row:hover .gv-cat-actions{opacity:1!important;}
+    .gv-leaf-row:hover .gv-leaf-del{opacity:1!important;}
+  </style>
+</helmet>
+
+<div style="height: 100vh; width: 100%; font-family: var(--font-sans); color: var(--foreground); background: var(--gray-50); overflow: hidden; position: relative">
+
+  <!-- ====================== HOME ====================== -->
+  <div data-screen-label="Home — Gestão à Vista" style="height:100vh;display:flex;flex-direction:column;">
+
+    <!-- APP HEADER -->
+    <header style="height:64px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:var(--background);border-bottom:1px solid var(--border);z-index:20;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:38px;height:38px;border-radius:10px;background:var(--primary);display:inline-flex;align-items:center;justify-content:center;flex:none;box-shadow:var(--shadow-sm);">
+          <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:21px;height:21px;"><path d="M11.2151 3.47949V7.78541C11.2151 9.70782 9.66494 11.2649 7.75103 11.2649H3.46412C1.55021 11.2649 0 9.70782 0 7.78541V3.47949C0 1.55708 1.55021 0 3.46412 0H7.75103C7.89888 0 8.04599 0.00965287 8.18718 0.0297011L6.60075 1.62317H3.46412C3.06123 1.62317 2.68052 1.75162 2.36264 1.98849C2.29019 2.04121 2.22144 2.10061 2.15639 2.16596C2.0906 2.23204 2.0322 2.3011 1.97971 2.37312C1.74389 2.69241 1.616 3.07778 1.616 3.47949V7.78541C1.616 8.28216 1.80968 8.74996 2.15713 9.09895C2.50753 9.4509 2.96956 9.64248 3.46486 9.64248H7.75177C8.24632 9.64248 8.71205 9.45165 9.0595 9.09895C9.4099 8.74996 9.60063 8.28291 9.60063 7.78541V4.62818L11.1871 3.03471C11.207 3.17951 11.2166 3.32801 11.2166 3.47875L11.2151 3.47949Z" fill="#fff"></path><path d="M10.3521 9.1975L9.20996 10.3447L10.8581 12.0002L12.0003 10.853L10.3521 9.1975Z" fill="#fff"></path><path d="M10.7026 1.65793L9.49758 2.86825L5.60248 6.78063L2.64844 3.81349L3.79058 2.66628L5.60248 4.48622L8.35248 1.72401L9.55894 0.512207C10.0239 0.798081 10.4165 1.19162 10.7026 1.65793Z" fill="#fff"></path></svg>
+        </div>
+        <span style="font-size:18px;font-weight:700;letter-spacing:-0.02em;color:var(--gray-900);">Docnix Workspace</span>
+        <button title="Trocar workspace" style="width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border:none;background:transparent;color:var(--gray-500);border-radius:var(--radius-md);cursor:pointer;" style-hover="background:var(--accent);color:var(--foreground);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="m6 9 6 6 6-6"></path></svg>
+        </button>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <x-import component-from-global-scope="PRIZMDesignSystem_45a1b2.Button" onClick="{{ openConfig }}" hint-size="auto,36px">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" style="width:14px;height:14px;"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+          Iniciar apresentação
+        </x-import>
+        <div style="width:1px;height:28px;background:var(--border);"></div>
+        <div style="width:38px;height:38px;border-radius:999px;background:var(--blue-100);color:var(--blue-700);display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex:none;border:1px solid var(--blue-100);cursor:pointer;overflow:hidden;">RA</div>
+      </div>
+    </header>
+
+    <div style="flex:1;display:flex;min-height:0;">
+
+      <!-- SIDEBAR -->
+      <aside style="width:280px;flex:none;height:100%;background:var(--background);border-right:1px solid var(--border);display:flex;flex-direction:column;">
+        <div style="padding:16px 16px 12px;display:flex;flex-direction:column;gap:10px;">
+          <div style="position:relative;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--muted-foreground)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;position:absolute;left:11px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+            <input placeholder="Buscar por dashboards…" style="width:100%;height:38px;border:1px solid var(--input);border-radius:var(--radius-md);background:var(--background);font-family:var(--font-sans);font-size:14px;color:var(--foreground);padding:0 12px 0 34px;box-shadow:var(--shadow-2xs);">
+          </div>
+
+          <div style="display:flex;width:100%;border-radius:var(--radius-md);box-shadow:var(--shadow-xs);overflow:hidden;">
+            <button onClick="{{ openAdd }}" style="flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:38px;border:none;background:var(--primary);color:#fff;font-family:var(--font-sans);font-size:14px;font-weight:500;cursor:pointer;padding:0 12px;" style-hover="background:var(--blue-700);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M5 12h14M12 5v14"></path></svg>
+              Adicionar dashboard
+            </button>
+            <button onClick="{{ openAddMenu }}" title="Mais opções" style="width:36px;flex:none;display:inline-flex;align-items:center;justify-content:center;border:none;border-left:1px solid rgba(255,255,255,.22);background:var(--primary);color:#fff;cursor:pointer;" style-hover="background:var(--blue-700);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <div style="flex:1;overflow-y:auto;padding:4px 10px 14px;">
+          <sc-for list="{{ homeRows }}" as="row" hint-placeholder-count="10">
+            <sc-if value="{{ row.isFolder }}" hint-placeholder-val="{{ false }}">
+              <div class="gv-cat-row" onClick="{{ row.onCollapse }}" style="display:flex;align-items:center;gap:6px;padding-top:7px;padding-bottom:7px;padding-right:6px;padding-left:{{ row.pad }};border-radius:8px;cursor:pointer;position:relative;background:{{ row.rowBg }};">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;flex:none;transform:{{ row.chev }};transition:transform .15s;"><path d="m6 9 6 6 6-6"></path></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;flex:none;"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"></path></svg>
+                <sc-if value="{{ row.editing }}" hint-placeholder-val="{{ false }}">
+                  <input value="{{ editingValue }}" autoFocus="{{ bTrue }}" onClick="{{ stop }}" onChange="{{ onEditInput }}" onKeyDown="{{ onEditKey }}" onBlur="{{ commitRename }}" style="flex:1;min-width:0;height:26px;border:1px solid var(--blue-500);border-radius:6px;font-family:var(--font-sans);font-size:14px;color:var(--foreground);padding:0 7px;outline:none;box-shadow:0 0 0 3px color-mix(in oklch,var(--ring) 22%,transparent);">
+                </sc-if>
+                <sc-if value="{{ row.notEditing }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-size:14px;font-weight:{{ row.fw }};color:var(--gray-900);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ row.label }}</span>
+                </sc-if>
+                <span style="flex:1;"></span>
+                <div class="gv-cat-actions" style="display:flex;align-items:center;gap:1px;opacity:{{ row.actOpacity }};">
+                  <button onClick="{{ row.onAddDash }}" title="Adicionar dashboard aqui" style="width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;border:none;background:transparent;color:var(--gray-500);border-radius:6px;cursor:pointer;" style-hover="background:var(--gray-200);color:var(--gray-800);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><path d="M5 12h14M12 5v14"></path></svg>
+                  </button>
+                  <button onClick="{{ row.onMenu }}" title="Opções da categoria" style="width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;border:none;background:transparent;color:var(--gray-500);border-radius:6px;cursor:pointer;" style-hover="background:var(--gray-200);color:var(--gray-800);">
+                    <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" style="width:16px;height:16px;"><circle cx="12" cy="5" r="1.6"></circle><circle cx="12" cy="12" r="1.6"></circle><circle cx="12" cy="19" r="1.6"></circle></svg>
+                  </button>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ row.isLeaf }}" hint-placeholder-val="{{ false }}">
+              <div onClick="{{ row.onSelect }}" style="display:flex;align-items:center;gap:9px;padding-top:7px;padding-bottom:7px;padding-right:6px;padding-left:{{ row.pad }};border-radius:8px;cursor:pointer;background:{{ row.rowBg }};" style-hover="background:var(--gray-100);" class="gv-leaf-row">
+                <img src="{{ row.connIcon }}" alt="" style="width:16px;height:16px;flex:none;object-fit:contain;border-radius:3px;">
+                <span style="flex:1;font-size:14px;font-weight:{{ row.fw }};color:{{ row.fg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ row.label }}</span>
+                <button onClick="{{ row.onDelete }}" title="Excluir dashboard" class="gv-leaf-del" style="width:24px;height:24px;flex:none;display:inline-flex;align-items:center;justify-content:center;border:none;background:transparent;color:var(--gray-400);border-radius:6px;cursor:pointer;opacity:0;transition:opacity .12s ease,background .12s ease,color .12s ease;" style-hover="background:var(--destructive);color:#fff;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M10 11v6"></path><path d="M14 11v6"></path></svg>
+                </button>
+              </div>
+            </sc-if>
+          </sc-for>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main style="flex:1;height:100%;display:flex;flex-direction:column;overflow:hidden;background:var(--gray-50);">
+        <div style="height:60px;flex:none;display:flex;align-items:center;gap:10px;padding:0 20px;background:var(--background);border-bottom:1px solid var(--border);">
+          <x-import component-from-global-scope="PRIZMDesignSystem_45a1b2.Button" variant="outline" onClick="{{ openView }}" hint-size="auto,36px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            Visualizar
+          </x-import>
+          <span style="flex:1;"></span>
+          <span style="font-size:13px;color:var(--muted-foreground);">Atualizado há 2 min</span>
+          <button title="Atualizar" style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);color:var(--gray-600);cursor:pointer;" style-hover="background:var(--accent);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path><path d="M3 21v-5h5"></path></svg>
+          </button>
+        </div>
+
+        <div style="flex:1;overflow-y:auto;">
+          <dc-import name="DashView" type="{{ activeType }}" title="{{ activeTitle }}" subtitle="{{ activeSubtitle }}" hint-size="100%,760px"></dc-import>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ====================== TREE / SPLIT MENU ====================== -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:900;">
+      <div onClick="{{ stop }}" style="position:fixed;left:{{ menuX }};top:{{ menuY }};width:212px;background:var(--popover);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:5px;">
+        <sc-for list="{{ menuItems }}" as="it" hint-placeholder-count="3">
+          <button onClick="{{ it.onClick }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border:none;background:transparent;border-radius:7px;font-family:var(--font-sans);font-size:14px;font-weight:500;color:{{ it.color }};cursor:pointer;text-align:left;" style-hover="background:var(--accent);">
+            <sc-if value="{{ it.isFolder }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;flex:none;"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path><path d="M12 10v6M9 13h6"></path></svg></sc-if>
+            <sc-if value="{{ it.isDash }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;flex:none;"><path d="M5 12h14M12 5v14"></path></svg></sc-if>
+            <sc-if value="{{ it.isRename }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;flex:none;"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></sc-if>
+            <sc-if value="{{ it.isDelete }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;flex:none;"><path d="M3 6h18M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></sc-if>
+            {{ it.label }}
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ====================== ADD MODAL ====================== -->
+  <sc-if value="{{ isAddOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Modal — Adicionar dashboard" style="position: fixed; inset: 0; z-index: 600; background: color-mix(in oklch,var(--gray-950) 45%,transparent); backdrop-filter: blur(3px); display: flex; justify-content: space-around; padding: 24px; flex-direction: column; align-items: flex-start; padding-left: 16px; padding-right: 16px; padding-top: 16px; padding-bottom: 16px" onClick="{{ closeModal }}">
+      <div onClick="{{ stop }}" style="width:540px;max-width:94vw;max-height:90vh;overflow-y:auto;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);margin:0 auto;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 22px 26px 18px; border-bottom: 1px solid var(--border); padding-top: 16px; padding-right: 16px; padding-left: 16px; padding-bottom: 16px; flex-wrap: nowrap">
+          <div>
+            <div style="font-size:19px;font-weight:600;letter-spacing:-0.02em;color:var(--gray-900);">Adicionar dashboard</div>
+            <div style="font-size:13px;color:var(--muted-foreground);margin-top:3px;">Conecte um painel de uma ferramenta externa.</div>
+          </div>
+          <button onClick="{{ closeModal }}" style="width:30px;height:30px;flex:none;display:inline-flex;align-items:center;justify-content:center;border:none;background:transparent;color:var(--muted-foreground);border-radius:var(--radius-md);cursor:pointer;" style-hover="background:var(--accent);color:var(--foreground);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+          </button>
+        </div>
+
+        <div style="padding: 22px 26px; display: flex; flex-direction: column; gap: 16px; padding-top: 16px; padding-bottom: 16px; padding-left: 16px; padding-right: 16px">
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <label style="font-size:14px;font-weight:500;color:var(--foreground);">Nome do dashboard</label>
+            <x-import component-from-global-scope="PRIZMDesignSystem_45a1b2.Input" value="{{ newName }}" onChange="{{ onName }}" placeholder="Ex: Funil de Vendas — Q3" hint-size="100%,36px"></x-import>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
+            <div style="display:flex;flex-direction:column;gap:7px;position:relative;">
+              <label style="font-size:14px;font-weight:500;color:var(--foreground);">Conector</label>
+              <button onClick="{{ toggleConnMenu }}" type="button" style="display:flex;align-items:center;gap:9px;height:36px;padding:0 10px;border:1px solid var(--border);background:var(--background);border-radius:var(--radius-md);cursor:pointer;font-family:var(--font-sans);font-size:14px;color:var(--foreground);box-shadow:var(--shadow-2xs);width:100%;">
+                <img src="{{ connectorIcon }}" alt="" style="width:16px;height:16px;flex:none;object-fit:contain;border-radius:3px;">
+                <span style="flex:1;text-align:left;">{{ connector }}</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--muted-foreground)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex:none;"><path d="m6 9 6 6 6-6"></path></svg>
+              </button>
+              <sc-if value="{{ connMenuOpen }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;top:100%;left:0;right:0;margin-top:5px;z-index:50;background:var(--popover);border:1px solid var(--border);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:4px;display:flex;flex-direction:column;gap:1px;">
+                  <sc-for list="{{ connectorChoices }}" as="c" hint-placeholder-count="4">
+                    <button onClick="{{ c.onPick }}" type="button" style="display:flex;align-items:center;gap:9px;padding:8px 9px;border:none;background:{{ c.bg }};border-radius:6px;cursor:pointer;font-family:var(--font-sans);font-size:14px;color:{{ c.fg }};font-weight:{{ c.fw }};text-align:left;" style-hover="background:var(--accent);">
+                      <img src="{{ c.icon }}" alt="" style="width:16px;height:16px;flex:none;object-fit:contain;border-radius:3px;">
+                      <span style="flex:1;">{{ c.label }}</span>
+                      <sc-if value="{{ c.selected }}" hint-placeholder-val="{{ false }}">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex:none;"><path d="M20 6 9 17l-5-5"></path></svg>
+                      </sc-if>
+                    </button>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+            <sc-if value="{{ noTarget }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <label style="font-size:14px;font-weight:500;color:var(--foreground);">Categoria</label>
+              <x-import component-from-global-scope="PRIZMDesignSystem_45a1b2.Select" value="{{ newCat }}" onChange="{{ onCat }}" options="{{ catOptions }}" hint-size="100%,36px"></x-import>
+            </div>
+            </sc-if>
+            <sc-if value="{{ hasTarget }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <label style="font-size:14px;font-weight:500;color:var(--foreground);">Categoria</label>
+              <div style="display:flex;align-items:center;gap:8px;height:36px;padding:0 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--gray-50);font-size:14px;color:var(--gray-700);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex:none;"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"></path></svg>
+                <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ targetLabel }}</span>
+              </div>
+            </div>
+            </sc-if>
+          </div>
+
+          <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg>
+              <span style="font-size:13px;font-weight:600;color:var(--gray-700);">Campos do conector <span style="color:var(--blue-700);">{{ connector }}</span></span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:13px;">
+              <sc-for list="{{ connectorFields }}" as="f" hint-placeholder-count="4">
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <label style="font-size:13px;font-weight:500;color:var(--gray-700);">{{ f.label }}</label>
+                  <x-import component-from-global-scope="PRIZMDesignSystem_45a1b2.Input" type="{{ f.type }}" placeholder="{{ f.ph }}" hint-size="100%,36px"></x-import>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 16px; border-top: 1px solid var(--border); padding-left: 16px; padding-right: 16px">
+          <x-import component-from-global-scope="PRIZMDesignSystem_45a1b2.Button" variant="outline" onClick="{{ closeModal }}" hint-size="92px,36px">Cancelar</x-import>
+          <x-import component-from-global-scope="PRIZMDesignSystem_45a1b2.Button" onClick="{{ addDashboard }}" hint-size="170px,36px">Adicionar dashboard</x-import>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ====================== CONFIG MODAL ====================== -->
+  <sc-if value="{{ isConfigOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Modal — Configurar apresentação" style="position: fixed; inset: 0; z-index: 600; background: color-mix(in oklch,var(--gray-950) 45%,transparent); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; padding: 24px; padding-top: 8px; padding-right: 8px; padding-bottom: 8px; padding-left: 8px" onClick="{{ closeModal }}">
+      <div onClick="{{ stop }}" style="width: 904px; max-width: 94vw; max-height: 90vh; display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); overflow: hidden; height: 773px">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 22px 26px 18px; border-bottom: 1px solid var(--border); padding-top: 16px; padding-bottom: 16px; padding-left: 16px; padding-right: 16px">
+          <div>
+            <div style="font-size:19px;font-weight:600;letter-spacing:-0.02em;color:var(--gray-900);">Configurar apresentação</div>
+            <div style="font-size:13px;color:var(--muted-foreground);margin-top:3px;">Selecione os dashboards e o tempo de exibição.</div>
+          </div>
+          <button onClick="{{ closeModal }}" style="width:30px;height:30px;flex:none;display:inline-flex;align-items:center;justify-content:center;border:none;background:transparent;color:var(--muted-foreground);border-radius:var(--radius-md);cursor:pointer;" style-hover="background:var(--accent);color:var(--foreground);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+          </button>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:0;flex:1;min-height:0;">
+          <!-- playlist -->
+          <div style="display:flex;flex-direction:column;border-right:1px solid var(--border);min-height:0;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 22px 8px;">
+              <span style="font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gray-700);">Dashboards na exibição</span>
+              <div style="display:flex;gap:12px;">
+                <button onClick="{{ selectAllPlay }}" style="border:none;background:transparent;color:var(--blue-600);font-family:var(--font-sans);font-size:12px;font-weight:600;cursor:pointer;padding:0;" style-hover="text-decoration:underline;">Todos</button>
+                <button onClick="{{ clearPlay }}" style="border:none;background:transparent;color:var(--muted-foreground);font-family:var(--font-sans);font-size:12px;font-weight:600;cursor:pointer;padding:0;" style-hover="text-decoration:underline;">Limpar</button>
+              </div>
+            </div>
+            <div style="flex:1;overflow-y:auto;padding:4px 14px 14px;">
+              <sc-for list="{{ cfgRows }}" as="row" hint-placeholder-count="10">
+                <div onClick="{{ row.onToggle }}" style="display:flex;align-items:center;gap:11px;padding:7px 8px;padding-left:{{ row.pad }};border-radius:8px;cursor:pointer;" style-hover="background:var(--gray-100);">
+                  <x-import component-from-global-scope="PRIZMDesignSystem_45a1b2.Checkbox" checked="{{ row.checked }}" onChange="{{ noop }}" hint-size="16px,16px"></x-import>
+                  <span style="font-size:14px;font-weight:{{ row.fw }};color:{{ row.fg }};">{{ row.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- settings -->
+          <div style="padding: 18px 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-left: 16px; padding-right: 16px; padding-top: 16px; padding-bottom: 16px">
+            <span style="font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gray-700);">Tempo por dashboard</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
+              <sc-for list="{{ presets }}" as="p" hint-placeholder-count="5">
+                <button onClick="{{ p.onClick }}" style="height:34px;padding:0 14px;border-radius:var(--radius-md);border:1px solid {{ p.bd }};background:{{ p.bg }};color:{{ p.fg }};font-family:var(--font-sans);font-size:13px;font-weight:600;cursor:pointer;transition:all .14s;">{{ p.label }}</button>
+              </sc-for>
+            </div>
+
+            <div style="display:flex;align-items:flex-end;gap:10px;margin-top:14px;">
+              <div style="display:flex;flex-direction:column;gap:6px;width:96px;flex:none;">
+                <label style="font-size:13px;font-weight:500;color:var(--gray-700);">Personalizado</label>
+                <x-import component-from-global-scope="PRIZMDesignSystem_45a1b2.Input" type="number" value="{{ intervalNum }}" onChange="{{ onIntervalNum }}" hint-size="96px,36px"></x-import>
+              </div>
+              <div style="flex:1;">
+                <x-import component-from-global-scope="PRIZMDesignSystem_45a1b2.Select" value="{{ intervalUnit }}" onChange="{{ onIntervalUnit }}" options="{{ unitOptions }}" hint-size="100%,36px"></x-import>
+              </div>
+            </div>
+            <div style="font-size:13px;color:var(--muted-foreground);margin-top:6px;">Cada dashboard fica <span style="color:var(--gray-900);font-weight:600;">{{ intervalLabel }}</span> em exibição.</div>
+
+            <div style="height:1px;background:var(--border);margin:14px 0;"></div>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div>
+                <div style="font-size:14px;font-weight:500;color:var(--foreground);">Transição suave (fade)</div>
+                <div style="font-size:12px;color:var(--muted-foreground);">Evita cortes bruscos na troca de telas.</div>
+              </div>
+              <x-import component-from-global-scope="PRIZMDesignSystem_45a1b2.Switch" checked="{{ fade }}" onCheckedChange="{{ onFade }}" hint-size="36px,20px"></x-import>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">
+              <div>
+                <div style="font-size:14px;font-weight:500;color:var(--foreground);">Repetir em loop</div>
+                <div style="font-size:12px;color:var(--muted-foreground);">Reinicia a sequência ao terminar.</div>
+              </div>
+              <x-import component-from-global-scope="PRIZMDesignSystem_45a1b2.Switch" checked="{{ loop }}" onCheckedChange="{{ onLoop }}" hint-size="36px,20px"></x-import>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 16px; border-top: 1px solid var(--border); background: var(--gray-50)">
+          <span style="font-size:13px;color:var(--muted-foreground);"><span style="color:var(--gray-900);font-weight:600;">{{ selCount }}</span> dashboards · troca a cada <span style="color:var(--gray-900);font-weight:600;">{{ intervalLabel }}</span></span>
+          <div style="display: flex; gap: 16px">
+            <x-import component-from-global-scope="PRIZMDesignSystem_45a1b2.Button" variant="outline" onClick="{{ closeModal }}" hint-size="92px,36px">Cancelar</x-import>
+            <x-import component-from-global-scope="PRIZMDesignSystem_45a1b2.Button" onClick="{{ startPlay }}" hint-size="150px,36px">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" style="width:14px;height:14px;"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              Iniciar exibição
+            </x-import>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ====================== MODO PLAY ====================== -->
+  <sc-if value="{{ playing }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Modo Play — exibição full screen" style="position:fixed;inset:0;z-index:800;background:var(--gray-50);overflow:hidden;">
+      <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; padding: 20px 40px 56px; overflow: hidden">
+        <div style="width:100%;max-width:1840px;flex:1;min-height:0;display:flex;flex-direction:column;opacity:{{ playOpacity }};transition:opacity .45s ease;">
+          <dc-import name="DashView" type="{{ playCurrentType }}" title="{{ playCurrentTitle }}" subtitle="{{ playCurrentSubtitle }}" show-stop="{{ bTrue }}" on-stop="{{ exitPlay }}" fill="{{ bTrue }}" style="height:100%;width:100%;" hint-size="100%,100%"></dc-import>
+        </div>
+      </div>
+
+      <div style="position:absolute;bottom:22px;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:center;gap:9px;">
+        <sc-for list="{{ dots }}" as="d" hint-placeholder-count="3">
+          <button onClick="{{ d.onClick }}" title="Ir para este dashboard" style="position:relative;height:8px;width:{{ d.w }};border-radius:999px;border:none;background:{{ d.bg }};cursor:pointer;padding:0;overflow:hidden;transition:width .3s ease,background .3s ease;">
+            <span style="position:absolute;top:0;left:0;bottom:0;width:{{ d.fill }};background:var(--blue-600);border-radius:999px;transition:width .2s linear;"></span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ====================== VISUALIZAR (single full screen) ====================== -->
+  <sc-if value="{{ viewing }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Visualizar — full screen" style="position:fixed;inset:0;z-index:800;background:var(--gray-50);overflow:hidden;">
+      <div style="position:absolute;inset:0;display:flex;align-items:stretch;justify-content:center;padding:20px 40px 40px;overflow:hidden;">
+        <div style="width:100%;max-width:1840px;display:flex;flex-direction:column;">
+          <dc-import name="DashView" type="{{ activeType }}" title="{{ activeTitle }}" subtitle="{{ activeSubtitle }}" show-stop="{{ bTrue }}" on-stop="{{ closeView }}" stop-label="Fechar" fill="{{ bTrue }}" style="height:100%;width:100%;" hint-size="100%,100%"></dc-import>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: null,
+      menu: null,
+      editingId: null,
+      editingValue: '',
+      targetCatId: null,
+      activeLeaf: null,
+      connector: 'Metabase',
+      connMenuOpen: false,
+      newName: '',
+      newCat: 'Vendas',
+      checked: { funil: true, canais: true, agendas: true },
+      collapsed: {},
+      intervalNum: 30,
+      intervalUnit: 'Segundos',
+      fade: true,
+      loop: true,
+      tree: [
+        { id: 'marketing', label: 'Marketing', children: [
+          { id: 'leads', label: 'Leads Gerados' },
+          { id: 'mqls', label: 'MQLs' },
+          { id: 'sqls', label: 'SQLs' },
+          { id: 'canais', label: 'Canais' },
+        ]},
+        { id: 'prospec', label: 'Prospecção', children: [
+          { id: 'acoes', label: 'Ações Realizadas' },
+          { id: 'agendas', label: 'Agendas' },
+        ]},
+        { id: 'vendas', label: 'Vendas', children: [
+          { id: 'funil', label: 'Funil de Vendas' },
+          { id: 'forecast', label: 'Forecast' },
+          { id: 'desempenho', label: 'Desempenho', children: [
+            { id: 'vendedores', label: 'Vendedores' },
+            { id: 'regiao', label: 'Região' },
+          ]},
+        ]},
+        { id: 'operacoes', label: 'Operações', children: [
+          { id: 'infra', label: 'Monitoramento de Infra' },
+        ]},
+      ],
+      viewing: false,
+      playing: false,
+      playlist: [],
+      playCurrent: 0,
+      playElapsed: 0,
+      playOpacity: 1,
+      paused: false,
+      transitioning: false,
+    };
+  }
+
+  componentDidMount() {
+    this._tick = setInterval(() => this.onTick(), 200);
+    this._onKey = (e) => {
+      if (e.key === 'Escape') {
+        if (this.state.playing) this.exitPlay();
+        else if (this.state.viewing) this.closeView();
+        else if (this.state.menu) this.setState({ menu: null });
+      }
+    };
+    window.addEventListener('keydown', this._onKey);
+  }
+  componentWillUnmount() {
+    clearInterval(this._tick);
+    window.removeEventListener('keydown', this._onKey);
+  }
+
+  // ---------- tree helpers ----------
+  cloneTree() { return JSON.parse(JSON.stringify(this.state.tree)); }
+  findNode(nodes, id) {
+    for (const n of nodes) {
+      if (n.id === id) return n;
+      if (n.children) { const r = this.findNode(n.children, id); if (r) return r; }
+    }
+    return null;
+  }
+  removeFrom(nodes, id) {
+    return nodes.filter((n) => n.id !== id).map((n) => n.children ? { ...n, children: this.removeFrom(n.children, id) } : n);
+  }
+  leavesOf(node) {
+    const out = [];
+    const walk = (n) => { if (Array.isArray(n.children)) n.children.forEach(walk); else out.push(n.id); };
+    walk(node);
+    return out;
+  }
+  findLeaf(id, nodes) {
+    nodes = nodes || this.state.tree;
+    for (const n of nodes) {
+      if (n.id === id && !Array.isArray(n.children)) return n;
+      if (n.children) { const r = this.findLeaf(id, n.children); if (r) return r; }
+    }
+    return null;
+  }
+
+  // ---------- menus ----------
+  openMenu(type, nodeId, e, alignRight) {
+    if (e && e.stopPropagation) e.stopPropagation();
+    const w = 212;
+    const r = e.currentTarget.getBoundingClientRect();
+    let x = alignRight ? r.right - w : r.left;
+    if (x < 8) x = 8;
+    const y = r.bottom + 6;
+    this.setState({ menu: { type, nodeId, x, y } });
+  }
+  closeMenu() { this.setState({ menu: null }); }
+
+  // ---------- category actions ----------
+  toggleCollapse(id) { this.setState((s) => ({ collapsed: { ...s.collapsed, [id]: !s.collapsed[id] } })); }
+  addRootCategory() {
+    const id = 'cat' + Date.now();
+    const tree = this.cloneTree();
+    tree.push({ id, label: 'Nova categoria', children: [] });
+    this.setState({ tree, menu: null, editingId: id, editingValue: 'Nova categoria' });
+  }
+  addSubcategory(parentId) {
+    const id = 'cat' + Date.now();
+    const tree = this.cloneTree();
+    const p = this.findNode(tree, parentId);
+    if (p) { p.children = p.children || []; p.children.push({ id, label: 'Nova subcategoria', children: [] }); }
+    this.setState((s) => ({ tree, menu: null, editingId: id, editingValue: 'Nova subcategoria', collapsed: { ...s.collapsed, [parentId]: false } }));
+  }
+  startRename(id) {
+    const n = this.findNode(this.state.tree, id);
+    this.setState({ menu: null, editingId: id, editingValue: n ? n.label : '' });
+  }
+  onEditInput(e) { this.setState({ editingValue: e.target.value }); }
+  commitRename() {
+    const id = this.state.editingId;
+    if (!id) return;
+    const val = (this.state.editingValue || '').trim() || 'Sem nome';
+    const tree = this.cloneTree();
+    const n = this.findNode(tree, id);
+    if (n) n.label = val;
+    this.setState({ tree, editingId: null, editingValue: '' });
+  }
+  cancelRename() { this.setState({ editingId: null, editingValue: '' }); }
+  onEditKey(e) { if (e.key === 'Enter') this.commitRename(); else if (e.key === 'Escape') this.cancelRename(); }
+  deleteNode(id) { this.setState({ tree: this.removeFrom(this.state.tree, id), menu: null }); }
+  addDashToCat(catId) { this.setState({ modal: 'add', menu: null, targetCatId: catId, newName: '', connector: 'Metabase' }); }
+  openAdd() { this.setState({ modal: 'add', menu: null, targetCatId: null, newName: '', connector: 'Metabase' }); }
+
+  // ---------- playlist selection (config modal) ----------
+  toggleCheck(id) { this.setState((s) => ({ checked: { ...s.checked, [id]: !s.checked[id] } })); }
+  toggleGroup(node) {
+    const leaves = this.leavesOf(node);
+    const allOn = leaves.length > 0 && leaves.every((id) => this.state.checked[id]);
+    this.setState((s) => {
+      const c = { ...s.checked };
+      leaves.forEach((id) => { c[id] = !allOn; });
+      return { checked: c };
+    });
+  }
+  selectAll(on) {
+    const all = [];
+    const walk = (nodes) => nodes.forEach((n) => { if (Array.isArray(n.children)) walk(n.children); else all.push(n.id); });
+    walk(this.state.tree);
+    const c = {};
+    all.forEach((id) => { c[id] = on; });
+    this.setState({ checked: c });
+  }
+
+  addDashboard() {
+    const name = (this.state.newName || '').trim();
+    if (!name) { this.setState({ modal: null, targetCatId: null }); return; }
+    const id = 'c' + Date.now();
+    const tree = this.cloneTree();
+    let openId = null;
+    if (this.state.targetCatId) {
+      const p = this.findNode(tree, this.state.targetCatId);
+      if (p) { p.children = p.children || []; p.children.push({ id, label: name }); openId = p.id; }
+    } else {
+      const catMap = { 'Marketing': 'marketing', 'Prospecção': 'prospec', 'Vendas': 'vendas' };
+      const catId = catMap[this.state.newCat] || 'vendas';
+      const cat = this.findNode(tree, catId) || tree[0];
+      if (cat) { cat.children = cat.children || []; cat.children.push({ id, label: name }); openId = cat.id; }
+    }
+    this.setState((s) => ({ tree, modal: null, newName: '', targetCatId: null, activeLeaf: id, collapsed: openId ? { ...s.collapsed, [openId]: false } : s.collapsed }));
+  }
+
+  // ---------- connectors ----------
+  connectorDefs() {
+    return {
+      'Metabase': [
+        { label: 'URL base do Metabase', ph: 'https://metabase.suaempresa.com' },
+        { label: 'Secret key (JWT)', ph: '••••••••••••••••', type: 'password' },
+        { label: 'ID do dashboard', ph: 'Ex: 42', type: 'number' },
+        { label: 'Parâmetros de embed (opcional)', ph: 'theme=transparent&bordered=false' },
+      ],
+      'Power BI': [
+        { label: 'ID do workspace', ph: '00000000-0000-0000-0000-000000000000' },
+        { label: 'ID do relatório', ph: 'Ex: f6bfd6...' },
+        { label: 'URL de embed', ph: 'https://app.powerbi.com/reportEmbed?...' },
+        { label: 'Token de acesso', ph: '••••••••••••••••', type: 'password' },
+      ],
+      'Looker': [
+        { label: 'Host do Looker', ph: 'suaempresa.looker.com' },
+        { label: 'URL de embed (SSO)', ph: '/embed/dashboards/123' },
+        { label: 'Client ID', ph: 'Ex: abcd1234' },
+        { label: 'Client secret', ph: '••••••••••••••••', type: 'password' },
+      ],
+      'SuperSet': [
+        { label: 'Domínio do Superset', ph: 'https://superset.suaempresa.com' },
+        { label: 'ID do dashboard (UUID)', ph: 'abf1c2d3-...' },
+        { label: 'Guest token', ph: '••••••••••••••••', type: 'password' },
+        { label: 'Domínio permitido (RLS) — opcional', ph: 'rls: { dataset: vendas }' },
+      ],
+      'Grafana': [
+        { label: 'URL do Grafana', ph: 'https://grafana.suaempresa.com' },
+        { label: 'UID do dashboard', ph: 'Ex: ceabc123' },
+        { label: 'Painel / variáveis (opcional)', ph: 'panelId=2&var-ambiente=prod' },
+        { label: 'API token', ph: '••••••••••••••••', type: 'password' },
+      ],
+    };
+  }
+  connIcon(conn) {
+    const map = {
+      'Metabase': 'assets/conn-metabase.webp',
+      'Power BI': 'assets/conn-powerbi.webp',
+      'Looker': 'assets/conn-looker.webp',
+      'SuperSet': 'assets/conn-superset.webp',
+      'Grafana': 'assets/conn-grafana.webp',
+    };
+    return map[conn] || map['Metabase'];
+  }
+  leafMeta() {
+    return {
+      leads: { type: 'funil', conn: 'Metabase' },
+      mqls: { type: 'funil', conn: 'Metabase' },
+      sqls: { type: 'funil', conn: 'Power BI' },
+      canais: { type: 'comercial', conn: 'Looker' },
+      acoes: { type: 'comercial', conn: 'Metabase' },
+      agendas: { type: 'inadimplencia', conn: 'SuperSet' },
+      funil: { type: 'funil', conn: 'Metabase' },
+      forecast: { type: 'inadimplencia', conn: 'Power BI' },
+      vendedores: { type: 'comercial', conn: 'Metabase' },
+      regiao: { type: 'comercial', conn: 'Looker' },
+      infra: { type: 'inadimplencia', conn: 'Grafana' },
+    };
+  }
+
+  // ---------- play loop ----------
+  buildPlaylist() {
+    const out = [];
+    const meta = this.leafMeta();
+    const walk = (nodes) => nodes.forEach((n) => {
+      if (Array.isArray(n.children)) walk(n.children);
+      else if (this.state.checked[n.id]) {
+        const m = meta[n.id] || { type: 'comercial', conn: 'Metabase' };
+        out.push({ id: n.id, label: n.label, title: n.label, type: m.type, subtitle: 'Workspace Comercial · ' + m.conn });
+      }
+    });
+    walk(this.state.tree);
+    return out;
+  }
+  intervalMs() {
+    const u = this.state.intervalUnit;
+    const k = u === 'Segundos' ? 1000 : u === 'Minutos' ? 60000 : 3600000;
+    return Math.max(1, this.state.intervalNum) * k;
+  }
+  onTick() {
+    const s = this.state;
+    if (!s.playing || s.paused || s.transitioning) return;
+    if (s.playlist.length <= 1) return;
+    const ms = this.intervalMs();
+    const el = s.playElapsed + 200;
+    if (el >= ms) this.beginTransition();
+    else this.setState({ playElapsed: el });
+  }
+  beginTransition() {
+    const delay = this.state.fade ? 450 : 0;
+    if (this.state.fade) this.setState({ transitioning: true, playOpacity: 0 });
+    else this.setState({ transitioning: true });
+    setTimeout(() => {
+      this.setState((s) => {
+        const len = s.playlist.length;
+        let next = s.playCurrent + 1;
+        if (next >= len) {
+          if (!s.loop) return { transitioning: false, paused: true, playElapsed: this.intervalMs(), playOpacity: 1 };
+          next = 0;
+        }
+        return { playCurrent: next, playElapsed: 0, playOpacity: 1, transitioning: false };
+      });
+    }, delay);
+  }
+  goTo(i) {
+    if (i === this.state.playCurrent) return;
+    const delay = this.state.fade ? 280 : 0;
+    if (this.state.fade) this.setState({ transitioning: true, playOpacity: 0 });
+    setTimeout(() => this.setState({ playCurrent: i, playElapsed: 0, playOpacity: 1, transitioning: false }), delay);
+  }
+  startPlay() {
+    const pl = this.buildPlaylist();
+    if (pl.length === 0) return;
+    this.setState({ playing: true, modal: null, playlist: pl, playCurrent: 0, playElapsed: 0, playOpacity: 1, paused: false, transitioning: false });
+    try { const el = document.documentElement; if (el.requestFullscreen) { const p = el.requestFullscreen(); if (p && p.catch) p.catch(() => {}); } } catch (e) {}
+  }
+  exitPlay() {
+    this.setState({ playing: false, paused: false });
+    try { if (document.fullscreenElement) document.exitFullscreen(); } catch (e) {}
+  }
+  togglePause() { this.setState((s) => ({ paused: !s.paused })); }
+  openView() {
+    this.setState({ viewing: true });
+    try { const el = document.documentElement; if (el.requestFullscreen) { const p = el.requestFullscreen(); if (p && p.catch) p.catch(() => {}); } } catch (e) {}
+  }
+  closeView() {
+    this.setState({ viewing: false });
+    try { if (document.fullscreenElement) document.exitFullscreen(); } catch (e) {}
+  }
+
+  renderVals() {
+    const s = this.state;
+    const meta = this.leafMeta();
+
+    let activeType = 'comercial';
+    let activeTitle = 'Comercial · Visão Consolidada';
+    let activeSubtitle = 'Workspace Comercial · consolidado de Junho 2025';
+    if (s.activeLeaf) {
+      const lf = this.findLeaf(s.activeLeaf);
+      const m = meta[s.activeLeaf] || { type: 'comercial', conn: 'Metabase' };
+      if (lf) { activeType = m.type; activeTitle = lf.label; activeSubtitle = 'Workspace Comercial · ' + m.conn; }
+    }
+
+    // sidebar tree rows
+    const homeRows = [];
+    const walk = (nodes, level) => nodes.forEach((n) => {
+      const isFolder = Array.isArray(n.children);
+      if (isFolder) {
+        const collapsed = !!s.collapsed[n.id];
+        const editing = s.editingId === n.id;
+        const menuHere = s.menu && s.menu.type === 'cat' && s.menu.nodeId === n.id;
+        homeRows.push({
+          isFolder: true, isLeaf: false,
+          label: n.label,
+          pad: (8 + level * 16) + 'px',
+          chev: collapsed ? 'rotate(-90deg)' : 'rotate(0deg)',
+          fw: level === 0 ? '600' : '500',
+          rowBg: menuHere ? 'var(--gray-100)' : 'transparent',
+          editing, notEditing: !editing,
+          actOpacity: menuHere ? '1' : '0',
+          onCollapse: () => this.toggleCollapse(n.id),
+          onAddDash: (e) => { e.stopPropagation(); this.addDashToCat(n.id); },
+          onMenu: (e) => this.openMenu('cat', n.id, e, true),
+        });
+        if (!collapsed) walk(n.children, level + 1);
+      } else {
+        const active = s.activeLeaf === n.id;
+        const lm = meta[n.id] || { conn: 'Metabase' };
+        homeRows.push({
+          isFolder: false, isLeaf: true,
+          label: n.label,
+          pad: (8 + level * 16 + 3) + 'px',
+          connIcon: this.connIcon(lm.conn),
+          icon: active ? 'var(--blue-600)' : 'var(--gray-400)',
+          fg: active ? 'var(--blue-700)' : 'var(--gray-700)',
+          fw: active ? '600' : '500',
+          rowBg: active ? 'var(--blue-50)' : 'transparent',
+          onSelect: () => this.setState({ activeLeaf: n.id }),
+          onDelete: (e) => {
+            if (e && e.stopPropagation) e.stopPropagation();
+            this.setState((st) => ({
+              tree: this.removeFrom(st.tree, n.id),
+              activeLeaf: st.activeLeaf === n.id ? null : st.activeLeaf,
+            }));
+          },
+        });
+      }
+    });
+    walk(s.tree, 0);
+
+    // config modal rows
+    const cfgRows = [];
+    const walk2 = (nodes, level) => nodes.forEach((n) => {
+      const isFolder = Array.isArray(n.children);
+      let checked;
+      if (isFolder) { const lv = this.leavesOf(n); checked = lv.length > 0 && lv.every((id) => s.checked[id]); }
+      else checked = !!s.checked[n.id];
+      cfgRows.push({
+        label: n.label,
+        pad: (2 + level * 18) + 'px',
+        fw: level === 0 ? '700' : (isFolder ? '600' : '500'),
+        fg: level === 0 ? 'var(--gray-900)' : 'var(--gray-700)',
+        checked,
+        onToggle: isFolder ? (() => this.toggleGroup(n)) : (() => this.toggleCheck(n.id)),
+      });
+      if (isFolder) walk2(n.children, level + 1);
+    });
+    walk2(s.tree, 0);
+
+    const connectorFields = (this.connectorDefs()[s.connector] || []).map((f) => ({ label: f.label, ph: f.ph, type: f.type || 'text' }));
+
+    const presetDefs = [['10s', 10, 'Segundos'], ['30s', 30, 'Segundos'], ['1 min', 1, 'Minutos'], ['5 min', 5, 'Minutos'], ['10 min', 10, 'Minutos']];
+    const presets = presetDefs.map(([label, num, unit]) => {
+      const active = s.intervalNum === num && s.intervalUnit === unit;
+      return {
+        label, active,
+        bg: active ? 'var(--primary)' : 'var(--background)',
+        fg: active ? '#fff' : 'var(--gray-700)',
+        bd: active ? 'var(--primary)' : 'var(--border)',
+        onClick: () => this.setState({ intervalNum: num, intervalUnit: unit }),
+      };
+    });
+    const intervalLabel = s.intervalNum + ' ' + s.intervalUnit.toLowerCase();
+    const livePlaylist = this.buildPlaylist();
+
+    // menu items
+    let menuItems = [];
+    if (s.menu) {
+      if (s.menu.type === 'split') {
+        menuItems = [
+          { isFolder: true, label: 'Nova categoria', color: 'var(--gray-700)', onClick: () => this.addRootCategory() },
+          { isDash: true, label: 'Adicionar dashboard', color: 'var(--gray-700)', onClick: () => this.openAdd() },
+        ];
+      } else if (s.menu.type === 'cat') {
+        const nid = s.menu.nodeId;
+        menuItems = [
+          { isFolder: true, label: 'Nova subcategoria', color: 'var(--gray-700)', onClick: () => this.addSubcategory(nid) },
+          { isRename: true, label: 'Renomear', color: 'var(--gray-700)', onClick: () => this.startRename(nid) },
+          { isDelete: true, label: 'Excluir categoria', color: 'var(--destructive)', onClick: () => this.deleteNode(nid) },
+        ];
+      }
+    }
+
+    const targetNode = s.targetCatId ? this.findNode(s.tree, s.targetCatId) : null;
+
+    // play state
+    const pl = s.playlist;
+    const cur = pl[s.playCurrent] || { type: 'comercial', title: '', label: '', subtitle: '' };
+    const progress = (Math.min(s.playElapsed / this.intervalMs(), 1) * 100) + '%';
+    const dots = pl.map((it, i) => {
+      const active = i === s.playCurrent;
+      return {
+        onClick: () => this.goTo(i),
+        w: active ? '40px' : '8px',
+        bg: active ? 'var(--blue-100)' : 'var(--gray-300)',
+        fill: active ? progress : '0%',
+      };
+    });
+
+    return {
+      isAddOpen: s.modal === 'add',
+      isConfigOpen: s.modal === 'config',
+      viewing: s.viewing,
+      playing: s.playing,
+      activeType, activeTitle, activeSubtitle,
+      homeRows, cfgRows, connectorFields,
+      bTrue: true,
+      editingValue: s.editingValue,
+      menuOpen: !!s.menu,
+      menuX: (s.menu ? s.menu.x : 0) + 'px',
+      menuY: (s.menu ? s.menu.y : 0) + 'px',
+      menuItems,
+      hasTarget: !!s.targetCatId,
+      noTarget: !s.targetCatId,
+      targetLabel: targetNode ? targetNode.label : '',
+      connector: s.connector,
+      connectorIcon: this.connIcon(s.connector),
+      connMenuOpen: s.connMenuOpen,
+      connectorChoices: ['Metabase', 'Power BI', 'Looker', 'SuperSet', 'Grafana'].map((c) => ({
+        label: c,
+        icon: this.connIcon(c),
+        selected: s.connector === c,
+        bg: s.connector === c ? 'var(--blue-50)' : 'transparent',
+        fg: s.connector === c ? 'var(--blue-700)' : 'var(--foreground)',
+        fw: s.connector === c ? '600' : '500',
+        onPick: () => this.setState({ connector: c, connMenuOpen: false }),
+      })),
+      connectorOptions: ['Metabase', 'Power BI', 'Looker', 'SuperSet', 'Grafana'],
+      catOptions: ['Marketing', 'Prospecção', 'Vendas'],
+      unitOptions: ['Segundos', 'Minutos', 'Horas'],
+      newName: s.newName, newCat: s.newCat,
+      intervalNum: s.intervalNum, intervalUnit: s.intervalUnit,
+      presets, intervalLabel, selCount: livePlaylist.length,
+      fade: s.fade, loop: s.loop,
+      playlist: pl,
+      playCurrentTitle: cur.title || cur.label,
+      playCurrentType: cur.type,
+      playCurrentSubtitle: cur.subtitle,
+      playOpacity: s.playOpacity,
+      paused: s.paused, notPaused: !s.paused,
+      progress, dots,
+      playCountLabel: (s.playCurrent + 1) + ' / ' + (pl.length || 1),
+      noop: () => {},
+      stop: (e) => { e.stopPropagation(); },
+      openAdd: () => this.openAdd(),
+      openAddMenu: (e) => this.openMenu('split', null, e, true),
+      closeMenu: () => this.closeMenu(),
+      onEditInput: (e) => this.onEditInput(e),
+      onEditKey: (e) => this.onEditKey(e),
+      commitRename: () => this.commitRename(),
+      openConfig: () => this.setState({ modal: 'config' }),
+      closeModal: () => this.setState({ modal: null, targetCatId: null }),
+      onConnector: (e) => this.setState({ connector: e.target.value }),
+      toggleConnMenu: () => this.setState((st) => ({ connMenuOpen: !st.connMenuOpen })),
+      onName: (e) => this.setState({ newName: e.target.value }),
+      onCat: (e) => this.setState({ newCat: e.target.value }),
+      onIntervalNum: (e) => this.setState({ intervalNum: Math.max(1, parseInt(e.target.value || '1', 10) || 1) }),
+      onIntervalUnit: (e) => this.setState({ intervalUnit: e.target.value }),
+      onFade: (v) => this.setState({ fade: v }),
+      onLoop: (v) => this.setState({ loop: v }),
+      addDashboard: () => this.addDashboard(),
+      startPlay: () => this.startPlay(),
+      openView: () => this.openView(),
+      closeView: () => this.closeView(),
+      exitPlay: () => this.exitPlay(),
+      togglePause: () => this.togglePause(),
+      selectAllPlay: () => this.selectAll(true),
+      clearPlay: () => this.selectAll(false),
+    };
+  }
+}
+</script>
+</body>
+</html>
